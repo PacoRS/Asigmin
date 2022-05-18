@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.organizador.Asigmin.SecondaryController">
    <children>
       <SplitPane dividerPositions="0.6178623718887262" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="685.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -27,24 +28,18 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="29.0" layoutY="89.0" prefHeight="21.0" prefWidth="149.0" />
+                  <TextField fx:id="idTF" layoutX="29.0" layoutY="89.0" prefHeight="21.0" prefWidth="149.0" />
                   <Text layoutX="84.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="29.0" layoutY="145.0" prefHeight="21.0" prefWidth="149.0" />
+                  <TextField fx:id="tituloTF" layoutX="29.0" layoutY="145.0" prefHeight="21.0" prefWidth="149.0" />
                   <Text layoutX="67.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="F.Creacion">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text layoutX="243.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recordatorio">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <TextField layoutX="217.0" layoutY="89.0" prefHeight="21.0" prefWidth="149.0" />
                   <Text layoutX="240.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="F.Recordatorio">
                      <font>
                         <Font size="16.0" />
@@ -55,13 +50,7 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="217.0" layoutY="206.0" prefHeight="21.0" prefWidth="149.0" />
-                  <Text layoutX="176.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="182.0" layoutY="437.0" mnemonicParsing="false" text="+">
+                  <Button layoutX="55.0" layoutY="418.0" mnemonicParsing="false" onAction="#addEntrada" text="Añadir">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -71,16 +60,42 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <TextArea layoutX="19.0" layoutY="263.0" prefHeight="124.0" prefWidth="342.0" />
-                  <DatePicker layoutX="213.0" layoutY="145.0" prefHeight="25.0" prefWidth="158.0" />
-                  <DatePicker layoutX="24.0" layoutY="206.0" prefHeight="25.0" prefWidth="158.0" />
+                  <TextArea fx:id="contenidoTA" layoutX="19.0" layoutY="263.0" prefHeight="124.0" prefWidth="342.0" />
+                  <DatePicker fx:id="frecordatorioDP" layoutX="213.0" layoutY="145.0" prefHeight="25.0" prefWidth="158.0" />
+                  <DatePicker fx:id="fcreacionDP" layoutX="24.0" layoutY="206.0" prefHeight="25.0" prefWidth="158.0" />
+                  <CheckBox fx:id="recordatorioCB" layoutX="229.0" layoutY="77.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Si/NO">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </CheckBox>
+                  <Text layoutX="239.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recordatorio">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <CheckBox fx:id="estadoCB" layoutX="196.0" layoutY="206.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="365.0" text="Finalizado/NO Finalizado">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </CheckBox>
+                  <Button layoutX="19.0" layoutY="20.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
+                  <Button layoutX="130.0" layoutY="418.0" mnemonicParsing="false" onAction="#deleteEntrada" text="Borrar">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="212.0" layoutY="418.0" mnemonicParsing="false" onAction="#modificarEntrada" text="Modificar">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="473.0" prefWidth="157.0">
                <children>
-                  <TableView layoutX="17.0" layoutY="80.0" prefHeight="474.0" prefWidth="278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableEntradas" layoutX="17.0" layoutY="80.0" onMouseClicked="#seleccionar" prefHeight="474.0" prefWidth="278.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
-                        <TableColumn prefWidth="293.9999694426854" text="Entradas" />
+                        <TableColumn fx:id="columEntradas" prefWidth="293.9999694426854" text="Entradas" />
                      </columns>
                   </TableView>
                </children>

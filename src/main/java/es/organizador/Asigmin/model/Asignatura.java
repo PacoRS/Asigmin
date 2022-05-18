@@ -1,8 +1,10 @@
 package es.organizador.Asigmin.model;
 
-import javafx.beans.property.SimpleStringProperty;
+import java.util.Objects;
 
-public class Asignatura {
+import es.organizador.Asigmin.interfaces.IAsignatura;
+
+public class Asignatura implements IAsignatura {
 	private int id;
 	private String nombre;
 
@@ -13,6 +15,12 @@ public class Asignatura {
 	public Asignatura(int id, String nombre) {
 		super();
 		this.id = id;
+		this.nombre = nombre;
+	}
+	
+
+	public Asignatura(String nombre) {
+		super();
 		this.nombre = nombre;
 	}
 
@@ -31,9 +39,28 @@ public class Asignatura {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Asignatura other = (Asignatura) obj;
+		return id == other.id;
+	}
 
 	@Override
 	public String toString() {
 		return "Asignatura [id=" + id + ", nombre=" + nombre + "]";
 	}
+
 }

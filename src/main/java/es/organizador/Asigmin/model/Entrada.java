@@ -1,22 +1,53 @@
 package es.organizador.Asigmin.model;
 
-import java.sql.Date;
 
-public class Entrada {
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+import es.organizador.Asigmin.interfaces.IEntrada;
+
+public class Entrada implements IEntrada{
 	private int id;
 	private String titulo;
-	private Date fechaCreacion;
+	private LocalDateTime fechaCreacion;
 	private boolean recordatorio;
 	private String contenido;
-	private Date fechaRecordatorio;
+	private LocalDateTime fechaRecordatorio;
 	private boolean estado;
+	private int id_asignatura;
 
 	public Entrada() {
 		super();
 	}
 
-	public Entrada(int id, String titulo, Date fechaCreacion, boolean recordatorio, String contenido,
-			Date fechaRecordatorio, boolean estado) {
+	public Entrada(int id, String titulo, LocalDateTime fechaCreacion, boolean recordatorio, String contenido,
+			LocalDateTime fechaRecordatorio, boolean estado, int id_asignatura) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.fechaCreacion = fechaCreacion;
+		this.recordatorio = recordatorio;
+		this.contenido = contenido;
+		this.fechaRecordatorio = fechaRecordatorio;
+		this.estado = estado;
+		this.id_asignatura = id_asignatura;
+	}
+	
+
+	public Entrada(String titulo, LocalDateTime fechaCreacion, boolean recordatorio, String contenido,
+			LocalDateTime fechaRecordatorio, boolean estado, int id_asignatura) {
+		super();
+		this.titulo = titulo;
+		this.fechaCreacion = fechaCreacion;
+		this.recordatorio = recordatorio;
+		this.contenido = contenido;
+		this.fechaRecordatorio = fechaRecordatorio;
+		this.estado = estado;
+		this.id_asignatura = id_asignatura;
+	}
+
+	public Entrada(int id, String titulo, LocalDateTime fechaCreacion, boolean recordatorio, String contenido,
+			LocalDateTime fechaRecordatorio, boolean estado) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -43,11 +74,11 @@ public class Entrada {
 		this.titulo = titulo;
 	}
 
-	public Date getFechaCreacion() {
+	public LocalDateTime getFechaCreacion() {
 		return fechaCreacion;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion) {
+	public void setFechaCreacion(LocalDateTime fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 
@@ -67,11 +98,11 @@ public class Entrada {
 		this.contenido = contenido;
 	}
 
-	public Date getFechaRecordatorio() {
+	public LocalDateTime getFechaRecordatorio() {
 		return fechaRecordatorio;
 	}
 
-	public void setFechaRecordatorio(Date fechaRecordatorio) {
+	public void setFechaRecordatorio(LocalDateTime fechaRecordatorio) {
 		this.fechaRecordatorio = fechaRecordatorio;
 	}
 
@@ -83,11 +114,36 @@ public class Entrada {
 		this.estado = estado;
 	}
 
+	public int getId_asignatura() {
+		return id_asignatura;
+	}
+
+	public void setId_asignatura(int id_asignatura) {
+		this.id_asignatura = id_asignatura;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Entrada other = (Entrada) obj;
+		return id == other.id;
+	}
+
 	@Override
 	public String toString() {
 		return "Entrada [id=" + id + ", titulo=" + titulo + ", fechaCreacion=" + fechaCreacion + ", recordatorio="
 				+ recordatorio + ", contenido=" + contenido + ", fechaRecordatorio=" + fechaRecordatorio + ", estado="
-				+ estado + "]";
+				+ estado + ", id_asignatura=" + id_asignatura + "]";
 	}
 
 }
