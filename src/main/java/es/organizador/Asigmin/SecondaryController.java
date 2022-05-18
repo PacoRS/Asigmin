@@ -157,7 +157,6 @@ public class SecondaryController {
 		} else {
 			try {
 				int aux2 = e.getId();
-				System.out.println(aux2);
 				DateTimeFormatter formatter = new DateTimeFormatterBuilder().appendPattern("uuu-MM-dd")
 						.parseDefaulting(ChronoField.HOUR_OF_DAY, 0).parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
 						.parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0).toFormatter();
@@ -184,6 +183,14 @@ public class SecondaryController {
 				asig.modificaEntrada(e, aux2);
 
 				this.tableEntradas.refresh();
+				
+				this.idTF.setText("");
+				this.tituloTF.setText("");
+				this.recordatorioCB.setText("");
+				this.estadoCB.setText("");
+				this.frecordatorioDP.setValue(null);
+				this.fcreacionDP.setValue(null);
+				this.contenidoTA.setText("");
 
 			} catch (NumberFormatException a) {
 
