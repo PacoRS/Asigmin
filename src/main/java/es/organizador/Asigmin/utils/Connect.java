@@ -62,7 +62,7 @@ public class Connect {
 	        try {
 	            c=JAXBContext.newInstance(DatosConexion.class);
 	            Unmarshaller m = c.createUnmarshaller();
-	            DatosConexion newR= (DatosConexion) m.unmarshal (new File(file));
+	            DatosConexion newR= (DatosConexion) m.unmarshal (Connect.class.getResource("/es/organizador/conexion/conexion.xml"));
 	            DatosCon=newR;
 	        } catch (Exception e) {
 	            // TODO: handle exception
